@@ -9,6 +9,143 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .dual-cta-wrap {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .btn-join-accent {
+      background: linear-gradient(135deg, #18a957, #0f8f49);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-join-accent:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .top-join-btn {
+      margin-left: 10px;
+    }
+
+    .hero-member-guide {
+      margin-top: 18px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.7;
+      display: inline-block;
+    }
+
+    .member-section {
+      background: #f8fbff;
+    }
+
+    .member-card {
+      max-width: 980px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 24px;
+      padding: 36px 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .member-card-top {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .member-highlight {
+      display: flex;
+      gap: 14px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .member-chip {
+      background: #eef6ff;
+      color: #1f4d8f;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .member-flow-box {
+      background: linear-gradient(135deg, #f4fbf7, #eef8ff);
+      border-radius: 20px;
+      padding: 24px 20px;
+      border: 1px solid #e3edf7;
+    }
+
+    .member-flow-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #17324d;
+    }
+
+    .member-flow-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .member-flow-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .member-flow-num {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 50%;
+      background: #1f6feb;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 1px;
+    }
+
+    .member-btn-wrap {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .consult-guide-note {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #64748b;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .member-card-top {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -25,8 +162,10 @@
           <a href="#generation">세대별 활용</a>
           <a href="#price-guide">가격 안내</a>
           <a href="#consult-form">상담 신청</a>
+          <a href="#member-join">회원 가입</a>
         </nav>
         <a href="#consult-form" class="btn btn-primary btn-sm">무료 상담</a>
+        <a href="join.html" class="btn btn-sm btn-join-accent top-join-btn">회원 가입</a>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴 열기">
           <i class="fas fa-bars"></i>
         </button>
@@ -37,6 +176,7 @@
       <a href="#generation">세대별 활용</a>
       <a href="#price-guide">가격 안내</a>
       <a href="#consult-form">상담 신청</a>
+      <a href="#member-join">회원 가입</a>
     </div>
   </header>
 
@@ -76,15 +216,24 @@
           </div>
         </div>
 
-        <div class="btn-wrap">
+        <div class="dual-cta-wrap">
           <a href="#consult-form" class="btn btn-primary">
             <i class="fas fa-comments"></i>
             무료 상담 신청
+          </a>
+          <a href="join.html" class="btn btn-join-accent">
+            <i class="fas fa-user-plus"></i>
+            회원 가입하기
           </a>
           <a href="#price-guide" class="btn btn-secondary">
             <i class="fas fa-info-circle"></i>
             설치 · 구독 안내 보기
           </a>
+        </div>
+
+        <div class="hero-member-guide">
+          상담은 상담대로 간편하게 신청하고,<br>
+          회원가입 후에는 나만의 추천코드와 추천링크를 받아 지인에게 공유할 수 있습니다.
         </div>
 
         <div class="hero-stats">
@@ -104,8 +253,8 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <strong>설치</strong>
-            <span>방문 안내</span>
+            <strong>회원가입</strong>
+            <span>추천링크 발급</span>
           </div>
         </div>
       </div>
@@ -394,10 +543,16 @@
           </div>
 
           <div class="price-cta">
-            <a href="#consult-form" class="btn btn-primary">
-              <i class="fas fa-comments"></i>
-              지금 무료 상담 신청
-            </a>
+            <div class="dual-cta-wrap">
+              <a href="#consult-form" class="btn btn-primary">
+                <i class="fas fa-comments"></i>
+                지금 무료 상담 신청
+              </a>
+              <a href="join.html" class="btn btn-join-accent">
+                <i class="fas fa-user-plus"></i>
+                회원 가입 후 추천링크 받기
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -449,7 +604,82 @@
     </div>
   </section>
 
-  <!-- ===== 9. 상담 신청 폼 ===== -->
+  <!-- ===== 9. 회원가입 안내 ===== -->
+  <section class="section member-section" id="member-join">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">MEMBERSHIP</div>
+        <h2 class="section-title">회원가입 후 추천코드와 추천링크를 받으세요</h2>
+        <p class="section-desc">
+          상담은 상담대로 진행하고, 회원가입은 별도로 진행하여 추천구조를 더 선명하게 만듭니다.
+        </p>
+      </div>
+
+      <div class="member-card">
+        <div class="member-card-top">
+          <div>
+            <h3 style="margin-top:0; font-size:30px; line-height:1.5; color:#16324f;">
+              회원가입이 완료되면<br>
+              나만의 추천코드와 추천링크가 자동 생성됩니다
+            </h3>
+            <p style="font-size:17px; line-height:1.9; color:#475569; margin-top:16px;">
+              발급된 추천링크를 카카오톡이나 문자로 지인에게 공유하면,
+              링크로 접속한 분의 추천코드가 자동으로 연결될 수 있도록 설계할 수 있습니다.
+            </p>
+
+            <div class="member-highlight">
+              <span class="member-chip">회원번호 자동 생성</span>
+              <span class="member-chip">추천코드 자동 발급</span>
+              <span class="member-chip">추천링크 자동 생성</span>
+              <span class="member-chip">지인 공유 가능</span>
+            </div>
+
+            <div class="member-btn-wrap">
+              <a href="join.html" class="btn btn-join-accent">
+                <i class="fas fa-user-plus"></i>
+                회원 가입 페이지로 이동
+              </a>
+              <a href="#consult-form" class="btn btn-secondary">
+                <i class="fas fa-comments"></i>
+                먼저 상담 신청하기
+              </a>
+            </div>
+          </div>
+
+          <div class="member-flow-box">
+            <div class="member-flow-title">
+              <i class="fas fa-diagram-project"></i>
+              진행 흐름
+            </div>
+            <ul class="member-flow-list">
+              <li>
+                <span class="member-flow-num">1</span>
+                <span>상담 신청은 상담신청 시트로만 저장</span>
+              </li>
+              <li>
+                <span class="member-flow-num">2</span>
+                <span>회원가입 시 회원관리 시트에 정식 등록</span>
+              </li>
+              <li>
+                <span class="member-flow-num">3</span>
+                <span>회원번호 · 추천코드 · 추천링크 자동 생성</span>
+              </li>
+              <li>
+                <span class="member-flow-num">4</span>
+                <span>추천링크를 지인에게 공유</span>
+              </li>
+              <li>
+                <span class="member-flow-num">5</span>
+                <span>링크 접속 시 추천코드 자동 반영 가능</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 10. 상담 신청 폼 ===== -->
   <section class="section section-form" id="consult-form">
     <div class="container">
       <div class="section-header">
@@ -457,6 +687,9 @@
         <h2 class="section-title">무료 상담 신청</h2>
         <p class="section-desc">
           설치 환경과 사용 목적에 맞춰 순차적으로 안내드립니다.
+        </p>
+        <p class="consult-guide-note">
+          상담신청은 상담 접수용이며, 추천링크 발급은 회원가입 후 진행됩니다.
         </p>
       </div>
 
@@ -539,7 +772,7 @@
                 placeholder="추천코드가 있으면 입력해 주세요"
                 autocomplete="off"
               />
-              <small>링크로 접속하면 자동 입력되고, 없으면 직접 입력할 수 있습니다.</small>
+              <small>추천링크로 접속한 경우 자동 입력되도록 연결할 수 있습니다.</small>
             </div>
           </div>
 
@@ -558,7 +791,7 @@
     </div>
   </section>
 
-  <!-- ===== 10. 추천코드 안내 ===== -->
+  <!-- ===== 11. 추천코드 안내 ===== -->
   <section class="section section-referral">
     <div class="container">
       <div class="section-header">
@@ -568,8 +801,8 @@
       <div class="ref-box">
         <div class="ref-box-icon"><i class="fas fa-share-alt"></i></div>
         <p>
-          추천을 통해 시작된 고객은 동일한 방식으로 다시 연결될 수 있습니다.<br>
-          추천코드는 상담 신청 시 자동으로 반영됩니다.
+          상담신청 시에는 추천코드만 입력할 수 있고,<br>
+          회원가입이 완료되면 본인 전용 추천코드와 추천링크를 발급받아 다시 공유할 수 있습니다.
         </p>
         <div class="ref-code-display" id="refCodeContainer">
           <div class="ref-code-label">현재 추천코드</div>
@@ -579,7 +812,7 @@
     </div>
   </section>
 
-  <!-- ===== 11. 푸터 ===== -->
+  <!-- ===== 12. 푸터 ===== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
