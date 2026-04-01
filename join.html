@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입 | 참빛 미네랄 수소수기</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .join-page {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #f8f6f1 0%, #eef5ea 100%);
+      padding: 140px 0 90px;
+    }
+
+    .join-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .join-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      padding: 40px 32px;
+    }
+
+    .join-top {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .join-top h1 {
+      font-size: 38px;
+      line-height: 1.35;
+      margin-bottom: 14px;
+    }
+
+    .join-top p {
+      font-size: 17px;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    .join-guide {
+      background: var(--green-bg);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 26px;
+    }
+
+    .join-guide ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .join-guide li {
+      display: flex;
+      gap: 10px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .join-guide i {
+      color: var(--green-mid);
+      margin-top: 4px;
+    }
+
+    .join-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .join-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .join-form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .join-form-group label {
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .join-form-group input,
+    .join-form-group textarea {
+      width: 100%;
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      background: #fff;
+    }
+
+    .join-form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .join-form-group input:focus,
+    .join-form-group textarea:focus {
+      border-color: var(--green-mid);
+      box-shadow: 0 0 0 4px rgba(95, 113, 82, 0.10);
+    }
+
+    .join-form-bottom {
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    .join-placeholder-box {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(24, 169, 87, 0.08);
+      color: #128446;
+      font-weight: 600;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .join-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .join-card {
+        padding: 28px 20px;
+      }
+
+      .join-top h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="join-page">
+    <div class="container">
+      <div class="join-wrap">
+        <div class="join-card">
+          <div class="join-top">
+            <div class="section-label">MEMBERSHIP</div>
+            <h1>회원가입 후<br>나만의 추천코드와 추천링크를 받으세요</h1>
+            <p>
+              지금은 회원가입 화면 구조를 먼저 나누는 단계입니다.<br>
+              다음 단계에서 Apps Script를 연결하면 회원번호, 추천코드, 추천링크가 자동 생성됩니다.
+            </p>
+          </div>
+
+          <div class="join-guide">
+            <ul>
+              <li><i class="fas fa-check-circle"></i><span>회원가입 시 회원번호 자동 생성</span></li>
+              <li><i class="fas fa-check-circle"></i><span>본인 전용 추천코드 자동 생성</span></li>
+              <li><i class="fas fa-check-circle"></i><span>추천링크 자동 발급 후 공유 가능</span></li>
+              <li><i class="fas fa-check-circle"></i><span>추천링크로 접속한 상담신청자는 추천코드가 자동 반영 가능</span></li>
+            </ul>
+          </div>
+
+          <form>
+            <div class="join-form-grid">
+              <div class="join-form-group">
+                <label for="joinName">이름</label>
+                <input type="text" id="joinName" placeholder="이름을 입력하세요">
+              </div>
+
+              <div class="join-form-group">
+                <label for="joinPhone">연락처</label>
+                <input type="text" id="joinPhone" placeholder="010-0000-0000">
+              </div>
+
+              <div class="join-form-group full">
+                <label for="joinAddress">주소</label>
+                <input type="text" id="joinAddress" placeholder="주소를 입력하세요">
+              </div>
+
+              <div class="join-form-group full">
+                <label for="joinRefCode">추천코드</label>
+                <input type="text" id="joinRefCode" placeholder="추천받은 코드가 있으면 입력">
+              </div>
+
+              <div class="join-form-group full">
+                <label for="joinMemo">메모</label>
+                <textarea id="joinMemo" placeholder="추가 내용을 입력하세요"></textarea>
+              </div>
+            </div>
+
+            <div class="join-form-bottom">
+              <button type="button" class="btn btn-green btn-lg">다음 단계에서 가입 기능 연결</button>
+            </div>
+
+            <div class="join-placeholder-box">
+              현재는 회원가입 화면만 먼저 준비한 상태입니다.<br>
+              다음 단계에서 구글시트와 Apps Script를 연결해 실제 가입 저장 기능을 붙이면 됩니다.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
