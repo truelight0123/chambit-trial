@@ -1,13 +1,14 @@
 /* =============================================
-   참빛 미네랄 수소수기 - FINAL VERSION
-   - HTML 구조 100% 대응
-   - 값 누락 방지
-   - 추천코드 충돌 제거
+   참빛 미네랄 수소수기 - main.js
+   현재 단계:
+   - 상담신청 유지
+   - 회원가입 버튼/화면 분리
+   - 추천코드 URL 반영
    ============================================= */
 
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyjq4v2MLhzQZRCf5bCJKmO_tremdzalIgler3yg4zaq4E8bwHEoSvq4Xq0x87EpTE/exec";
 
-/* ===== 공통 함수 ===== */
+/* ===== 공통 ===== */
 function getQueryParam(name) {
   const params = new URLSearchParams(window.location.search);
   return params.get(name);
@@ -18,7 +19,7 @@ function getValue(id) {
   return el ? el.value.trim() : '';
 }
 
-/* ===== 추천코드 처리 ===== */
+/* ===== DOM 로딩 후 ===== */
 window.addEventListener('DOMContentLoaded', function () {
   const ref = (getQueryParam('ref') || '').trim();
 
@@ -28,7 +29,7 @@ window.addEventListener('DOMContentLoaded', function () {
   if (refInput) refInput.value = ref;
   if (refDisplay) refDisplay.textContent = ref || '없음';
 
-  /* ===== 전화번호 자동 포맷 ===== */
+  /* 전화번호 자동 포맷 */
   const phone = document.getElementById('phone');
   if (phone) {
     phone.addEventListener('input', function () {
@@ -46,9 +47,40 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+  /* 모바일 메뉴 */
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', function () {
+      mobileMenu.classList.toggle('open');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.classList.remove('open');
+      });
+    });
+  }
+
+  /* 헤더 스크롤 */
+  const header = document.getElementById('siteHeader');
+  if (header) {
+    const updateHeader = function () {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+
+    updateHeader();
+    window.addEventListener('scroll', updateHeader);
+  }
 });
 
-/* ===== 폼 제출 ===== */
+/* ===== 상담 신청 폼 제출 ===== */
 const form = document.getElementById('consultationForm');
 const btn = document.getElementById('submitBtn');
 const btnText = document.getElementById('submitBtnText');
@@ -63,16 +95,14 @@ if (form) {
     const data = {
       name: getValue('name'),
       phone: getValue('phone'),
-      email: '', // 없음
+      email: '',
       region: getValue('region'),
       storeType: getValue('consultType'),
       installTarget: getValue('installTarget'),
       purpose: getValue('purpose'),
       ref: getValue('referralCode'),
-      message: '' // 없음
+      message: ''
     };
-
-    console.log("전송 데이터:", data);
 
     if (!data.name) {
       alert('이름을 입력하세요');
@@ -90,9 +120,9 @@ if (form) {
     }
 
     try {
-      btn.disabled = true;
-      btnText.style.display = 'none';
-      btnLoading.style.display = 'inline-flex';
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.style.display = 'none';
+      if (btnLoading) btnLoading.style.display = 'inline-flex';
 
       const res = await fetch(WEB_APP_URL, {
         method: 'POST',
@@ -100,49 +130,49 @@ if (form) {
       });
 
       const result = await res.json();
-      console.log("응답:", result);
 
       if (result.success) {
         form.style.display = 'none';
-        successBox.style.display = 'block';
+        if (successBox) successBox.style.display = 'block';
       } else {
         alert(result.message || '오류 발생');
       }
-
     } catch (err) {
       console.error(err);
       alert('전송 실패');
     } finally {
-      btn.disabled = false;
-      btnText.style.display = 'inline-flex';
-      btnLoading.style.display = 'none';
+      if (btn) btn.disabled = false;
+      if (btnText) btnText.style.display = 'inline-flex';
+      if (btnLoading) btnLoading.style.display = 'none';
     }
   });
 }
 
 /* ===== 폼 초기화 ===== */
 if (resetBtn) {
-  resetBtn.addEventListener('click', () => {
+  resetBtn.addEventListener('click', function () {
     form.reset();
 
     const ref = (getQueryParam('ref') || '').trim();
+    const referralCode = document.getElementById('referralCode');
+    const refCodeDisplay = document.getElementById('refCodeDisplay');
 
-    document.getElementById('referralCode').value = ref;
-    document.getElementById('refCodeDisplay').textContent = ref || '없음';
+    if (referralCode) referralCode.value = ref;
+    if (refCodeDisplay) refCodeDisplay.textContent = ref || '없음';
 
     form.style.display = 'block';
-    successBox.style.display = 'none';
+    if (successBox) successBox.style.display = 'none';
   });
 }
 
-/* ===== 상단 버튼 ===== */
+/* ===== 상단 이동 버튼 ===== */
 const scrollBtn = document.getElementById('scrollTopBtn');
 if (scrollBtn) {
-  window.addEventListener('scroll', () => {
+  window.addEventListener('scroll', function () {
     scrollBtn.classList.toggle('visible', window.scrollY > 300);
   });
 
-  scrollBtn.addEventListener('click', () => {
+  scrollBtn.addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
