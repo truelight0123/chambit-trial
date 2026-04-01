@@ -30,6 +30,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
   const savedRef = localStorage.getItem('chambit_ref_code') || '';
   const finalRef = ref || savedRef;
+  
+  const joinLinks = document.querySelectorAll('a[href="join.html"]');
+
+if (joinLinks.length > 0 && finalRef) {
+  joinLinks.forEach(function(link) {
+    link.href = 'join.html?ref=' + encodeURIComponent(finalRef);
+  });
+}
 
   const refInput = document.getElementById('referralCode');
   const refDisplay = document.getElementById('refCodeDisplay');
