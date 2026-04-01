@@ -121,15 +121,61 @@
       text-align: center;
     }
 
-    .join-placeholder-box {
-      margin-top: 22px;
-      padding: 18px;
-      border-radius: 16px;
-      background: rgba(24, 169, 87, 0.08);
-      color: #128446;
-      font-weight: 600;
-      line-height: 1.8;
+    .join-help-text {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.7;
       text-align: center;
+    }
+
+    .join-result {
+      display: none;
+      margin-top: 24px;
+      padding: 22px 20px;
+      border-radius: 18px;
+      background: rgba(24, 169, 87, 0.08);
+      border: 1px solid rgba(24, 169, 87, 0.16);
+    }
+
+    .join-result h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      color: #128446;
+    }
+
+    .join-result-item {
+      margin-bottom: 12px;
+      color: var(--text-dark);
+      line-height: 1.7;
+      word-break: break-all;
+    }
+
+    .join-result-label {
+      display: block;
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .join-result-value {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .join-result-link {
+      width: 100%;
+      border: 1px solid rgba(0,0,0,0.10);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      background: #fff;
+    }
+
+    .join-result-copy {
+      margin-top: 12px;
     }
 
     @media (max-width: 760px) {
@@ -156,8 +202,7 @@
             <div class="section-label">MEMBERSHIP</div>
             <h1>회원가입 후<br>나만의 추천코드와 추천링크를 받으세요</h1>
             <p>
-              지금은 회원가입 화면 구조를 먼저 나누는 단계입니다.<br>
-              다음 단계에서 Apps Script를 연결하면 회원번호, 추천코드, 추천링크가 자동 생성됩니다.
+              회원가입이 완료되면 회원번호, 추천코드, 추천링크가 자동으로 생성되도록 연결할 수 있습니다.
             </p>
           </div>
 
@@ -170,46 +215,78 @@
             </ul>
           </div>
 
-          <form>
+          <!-- 중요: form id 추가 -->
+          <form id="joinForm">
             <div class="join-form-grid">
               <div class="join-form-group">
-                <label for="joinName">이름</label>
-                <input type="text" id="joinName" placeholder="이름을 입력하세요">
+                <label for="name">이름</label>
+                <input type="text" id="name" placeholder="이름을 입력하세요" required>
               </div>
 
               <div class="join-form-group">
-                <label for="joinPhone">연락처</label>
-                <input type="text" id="joinPhone" placeholder="010-0000-0000">
+                <label for="phone">연락처</label>
+                <input type="text" id="phone" placeholder="010-0000-0000" required>
               </div>
 
               <div class="join-form-group full">
-                <label for="joinAddress">주소</label>
-                <input type="text" id="joinAddress" placeholder="주소를 입력하세요">
+                <label for="address">주소</label>
+                <input type="text" id="address" placeholder="주소를 입력하세요">
               </div>
 
               <div class="join-form-group full">
-                <label for="joinRefCode">추천코드</label>
-                <input type="text" id="joinRefCode" placeholder="추천받은 코드가 있으면 입력">
+                <label for="referralCode">추천코드</label>
+                <input type="text" id="referralCode" placeholder="추천받은 코드가 있으면 입력">
               </div>
 
               <div class="join-form-group full">
-                <label for="joinMemo">메모</label>
-                <textarea id="joinMemo" placeholder="추가 내용을 입력하세요"></textarea>
+                <label for="memo">메모</label>
+                <textarea id="memo" placeholder="추가 내용을 입력하세요"></textarea>
               </div>
             </div>
 
             <div class="join-form-bottom">
-              <button type="button" class="btn btn-green btn-lg">다음 단계에서 가입 기능 연결</button>
+              <!-- 중요: submit 버튼으로 변경 -->
+              <button type="submit" class="btn btn-green btn-lg" id="joinSubmitBtn">
+                <span id="joinSubmitText"><i class="fas fa-user-plus"></i> 회원가입 완료</span>
+                <span id="joinSubmitLoading" style="display:none;"><i class="fas fa-spinner fa-spin"></i> 처리 중...</span>
+              </button>
             </div>
 
-            <div class="join-placeholder-box">
-              현재는 회원가입 화면만 먼저 준비한 상태입니다.<br>
-              다음 단계에서 구글시트와 Apps Script를 연결해 실제 가입 저장 기능을 붙이면 됩니다.
-            </div>
+            <p class="join-help-text">
+              회원가입 후 추천코드와 추천링크가 발급되면 지인에게 바로 공유할 수 있습니다.
+            </p>
           </form>
+
+          <!-- 중요: 결과 출력 영역 추가 -->
+          <div id="joinResult" class="join-result">
+            <h3>회원가입이 완료되었습니다</h3>
+
+            <div class="join-result-item">
+              <span class="join-result-label">회원번호</span>
+              <div class="join-result-value" id="resultMemberId">-</div>
+            </div>
+
+            <div class="join-result-item">
+              <span class="join-result-label">추천코드</span>
+              <div class="join-result-value" id="resultRefCode">-</div>
+            </div>
+
+            <div class="join-result-item">
+              <span class="join-result-label">추천링크</span>
+              <input type="text" id="resultRefLink" class="join-result-link" readonly>
+              <button type="button" class="btn btn-secondary join-result-copy" id="copyRefLinkBtn">
+                <i class="fas fa-copy"></i>
+                추천링크 복사
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
+
+  <!-- 중요: join.js 연결 -->
+  <script src="js/join.js"></script>
 </body>
 </html>
