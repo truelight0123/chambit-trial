@@ -23,11 +23,19 @@ function getValue(id) {
 window.addEventListener('DOMContentLoaded', function () {
   const ref = (getQueryParam('ref') || '').trim();
 
+  // 추천코드 저장
+  if (ref) {
+    localStorage.setItem('chambit_ref_code', ref);
+  }
+
+  const savedRef = localStorage.getItem('chambit_ref_code') || '';
+  const finalRef = ref || savedRef;
+
   const refInput = document.getElementById('referralCode');
   const refDisplay = document.getElementById('refCodeDisplay');
 
-  if (refInput) refInput.value = ref;
-  if (refDisplay) refDisplay.textContent = ref || '없음';
+  if (refInput) refInput.value = finalRef;
+  if (refDisplay) refDisplay.textContent = finalRef || '없음';
 
   /* 전화번호 자동 포맷 */
   const phone = document.getElementById('phone');
