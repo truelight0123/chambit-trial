@@ -6,7 +6,7 @@
    - 추천코드 URL 반영
    ============================================= */
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyjq4v2MLhzQZRCf5bCJKmO_tremdzalIgler3yg4zaq4E8bwHEoSvq4Xq0x87EpTE/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw6qHnoEaDcgMP4E21ZlcDlFE6fkC38zp2Rqh2ebc-GhPioiRAIi0VGhlwEno26OgJ8/exec";
 
 /* ===== 공통 ===== */
 function getQueryParam(name) {
