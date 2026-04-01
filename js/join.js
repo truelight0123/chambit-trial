@@ -1,4 +1,4 @@
-const WEB_APP_URL = "여기에_앱스크립트_URL_붙여넣기";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw6qHnoEaDcgMP4E21ZlcDlFE6fkC38zp2Rqh2ebc-GhPioiRAIi0VGhlwEno26OgJ8/exec";
 
 function getValue(id) {
   const el = document.getElementById(id);
