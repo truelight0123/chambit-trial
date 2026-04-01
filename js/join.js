@@ -36,15 +36,33 @@ document.addEventListener('DOMContentLoaded', function () {
   const copyRefLinkBtn = document.getElementById('copyRefLinkBtn');
 
   const urlParams = new URLSearchParams(window.location.search);
-  const ref = (urlParams.get('ref') || '').trim();
+  const refFromUrl = (urlParams.get('ref') || '').trim();
 
-  if (ref && referralCodeInput) {
-    referralCodeInput.value = ref;
+  if (refFromUrl) {
+    localStorage.setItem('chambit_ref_code', refFromUrl);
+  }
+
+  const savedRef = localStorage.getItem('chambit_ref_code') || '';
+  const finalRef = refFromUrl || savedRef;
+
+  if (finalRef && referralCodeInput) {
+    referralCodeInput.value = finalRef;
   }
 
   if (phoneInput) {
     phoneInput.addEventListener('input', function () {
-      formatPhoneInput(this);
+      const num = this.value.replace(/\D/g, '').slice(0, 11);
+
+      if (num.length <= 3) {
+        this.value = num;
+      } else if (num.length <= 7) {
+        this.value = num.slice(0, 3) + '-' + num.slice(3);
+      } else {
+        this.value =
+          num.slice(0, 3) + '-' +
+          num.slice(3, 7) + '-' +
+          num.slice(7);
+      }
     });
   }
 
