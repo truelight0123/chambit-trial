@@ -9,143 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
-
-  <style>
-    .dual-cta-wrap {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
-
-    .btn-join-accent {
-      background: linear-gradient(135deg, #18a957, #0f8f49);
-      color: #fff;
-      border: none;
-    }
-
-    .btn-join-accent:hover {
-      opacity: 0.95;
-      transform: translateY(-1px);
-    }
-
-    .top-join-btn {
-      margin-left: 10px;
-    }
-
-    .hero-member-guide {
-      margin-top: 18px;
-      padding: 14px 18px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(4px);
-      color: #fff;
-      font-size: 15px;
-      line-height: 1.7;
-      display: inline-block;
-    }
-
-    .member-section {
-      background: #f8fbff;
-    }
-
-    .member-card {
-      max-width: 980px;
-      margin: 0 auto;
-      background: #fff;
-      border-radius: 24px;
-      padding: 36px 28px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-    }
-
-    .member-card-top {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .member-highlight {
-      display: flex;
-      gap: 14px;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
-
-    .member-chip {
-      background: #eef6ff;
-      color: #1f4d8f;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .member-flow-box {
-      background: linear-gradient(135deg, #f4fbf7, #eef8ff);
-      border-radius: 20px;
-      padding: 24px 20px;
-      border: 1px solid #e3edf7;
-    }
-
-    .member-flow-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 14px;
-      color: #17324d;
-    }
-
-    .member-flow-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .member-flow-list li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-bottom: 12px;
-      color: #334155;
-      line-height: 1.6;
-    }
-
-    .member-flow-num {
-      width: 28px;
-      height: 28px;
-      min-width: 28px;
-      border-radius: 50%;
-      background: #1f6feb;
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 14px;
-      margin-top: 1px;
-    }
-
-    .member-btn-wrap {
-      margin-top: 24px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .consult-guide-note {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #64748b;
-      text-align: center;
-    }
-
-    @media (max-width: 860px) {
-      .member-card-top {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -157,26 +20,33 @@
           <span class="logo-mark">✦</span>
           <span class="logo-text">참빛 수소수기</span>
         </a>
+
         <nav class="header-nav">
           <a href="#why-chanbbit">왜 참빛인가</a>
           <a href="#generation">세대별 활용</a>
           <a href="#price-guide">가격 안내</a>
+          <a href="#member-join">회원가입</a>
           <a href="#consult-form">상담 신청</a>
-          <a href="#member-join">회원 가입</a>
         </nav>
-        <a href="#consult-form" class="btn btn-primary btn-sm">무료 상담</a>
-        <a href="join.html" class="btn btn-sm btn-join-accent top-join-btn">회원 가입</a>
+
+        <div class="header-actions">
+          <a href="join.html" class="btn btn-outline-green btn-sm">회원가입</a>
+          <a href="#consult-form" class="btn btn-primary btn-sm">무료 상담</a>
+        </div>
+
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴 열기">
           <i class="fas fa-bars"></i>
         </button>
       </div>
     </div>
+
     <div class="mobile-menu" id="mobileMenu">
       <a href="#why-chanbbit">왜 참빛인가</a>
       <a href="#generation">세대별 활용</a>
       <a href="#price-guide">가격 안내</a>
+      <a href="#member-join">회원가입</a>
       <a href="#consult-form">상담 신청</a>
-      <a href="#member-join">회원 가입</a>
+      <a href="join.html">회원가입 페이지로 이동</a>
     </div>
   </header>
 
@@ -189,7 +59,9 @@
           <span class="eyebrow-dot"></span>
           참빛 미네랄 수소수기
         </div>
+
         <h1>우리 가족이 매일 마시는 물,<br>이제는 더 신중하게</h1>
+
         <p>
           가정, 부모님 댁, 일상 속 다양한 생활 환경까지<br>
           매일 사용하는 물의 기준을 바꾸는 새로운 선택
@@ -216,24 +88,21 @@
           </div>
         </div>
 
-        <div class="dual-cta-wrap">
+        <div class="btn-wrap btn-wrap-3">
+          <a href="join.html" class="btn btn-green">
+            <i class="fas fa-user-plus"></i>
+            회원가입 하기
+          </a>
+
           <a href="#consult-form" class="btn btn-primary">
             <i class="fas fa-comments"></i>
             무료 상담 신청
           </a>
-          <a href="join.html" class="btn btn-join-accent">
-            <i class="fas fa-user-plus"></i>
-            회원 가입하기
-          </a>
+
           <a href="#price-guide" class="btn btn-secondary">
             <i class="fas fa-info-circle"></i>
             설치 · 구독 안내 보기
           </a>
-        </div>
-
-        <div class="hero-member-guide">
-          상담은 상담대로 간편하게 신청하고,<br>
-          회원가입 후에는 나만의 추천코드와 추천링크를 받아 지인에게 공유할 수 있습니다.
         </div>
 
         <div class="hero-stats">
@@ -303,6 +172,7 @@
           <h3>미네랄 반응형 수소수</h3>
           <p>미네랄 반응 기반 방식으로 일상에서 사용하는 물의 흐름에 새로운 기준을 제안합니다.</p>
         </div>
+
         <div class="why-card">
           <div class="why-icon">
             <i class="fas fa-sink"></i>
@@ -310,6 +180,7 @@
           <h3>편리한 언더싱크 구조</h3>
           <p>주방 공간을 크게 차지하지 않으면서 가정과 매장에서 부담 없이 사용할 수 있습니다.</p>
         </div>
+
         <div class="why-card">
           <div class="why-icon">
             <i class="fas fa-home"></i>
@@ -317,6 +188,7 @@
           <h3>다양한 생활 활용</h3>
           <p>식수, 커피, 차, 요리 등 하루의 물 사용 전반에 자연스럽게 연결됩니다.</p>
         </div>
+
         <div class="why-card">
           <div class="why-icon">
             <i class="fas fa-headset"></i>
@@ -335,6 +207,7 @@
         <div class="section-label">FOR YOU</div>
         <h2 class="section-title">이런 분께 추천합니다</h2>
       </div>
+
       <div class="recommend-grid">
         <div class="recommend-item">
           <div class="recommend-icon"><i class="fas fa-heart"></i></div>
@@ -476,6 +349,7 @@
         <div class="section-label">FEATURES</div>
         <h2 class="section-title">참빛이 제안하는 물 사용의 기준</h2>
       </div>
+
       <div class="feature-list">
         <div class="feature-item">
           <div class="feature-icon"><i class="fas fa-atom"></i></div>
@@ -543,14 +417,14 @@
           </div>
 
           <div class="price-cta">
-            <div class="dual-cta-wrap">
+            <div class="btn-wrap btn-wrap-2">
+              <a href="join.html" class="btn btn-green">
+                <i class="fas fa-user-plus"></i>
+                회원가입 후 추천링크 받기
+              </a>
               <a href="#consult-form" class="btn btn-primary">
                 <i class="fas fa-comments"></i>
                 지금 무료 상담 신청
-              </a>
-              <a href="join.html" class="btn btn-join-accent">
-                <i class="fas fa-user-plus"></i>
-                회원 가입 후 추천링크 받기
               </a>
             </div>
           </div>
@@ -577,103 +451,67 @@
           <h4>산화 스트레스 <em class="research-en">Anti-Oxidation</em></h4>
           <p class="research-headline">"활성산소만 골라 제거하는 스마트 항산화"</p>
           <p class="research-sub">"세포를 녹슬게 하는 활성산소, 이제 수소수로 케어해 보세요."</p>
-          <p>수소는 지구상에서 가장 작은 항산화 물질로, 세포막과 뇌장벽(BBB)을 통과해 유해 활성산소만을 선택적으로 제거합니다. 2024년 연구는 수소수가 DNA 손상을 막는 강력한 보호막임을 입증했습니다.</p>
+          <p>수소는 지구상에서 가장 작은 항산화 물질로, 세포막과 뇌장벽(BBB)을 통과해 유해 활성산소만을 선택적으로 제거합니다.</p>
         </div>
+
         <div class="research-card">
           <div class="research-num">02</div>
           <h4>회복과 컨디션 <em class="research-en">Recovery</em></h4>
           <p class="research-headline">"젖산은 줄이고, 에너지는 채우는 밸런스 유지"</p>
           <p class="research-sub">"운동 후 피로 젖산, 수소수로 빠르게 케어 해 보세요."</p>
-          <p>수소수는 운동 중 발생하는 산성화를 억제하고 염증 수치를 낮춰 근육 회복 속도를 높입니다. 2025년 스포츠 과학계는 미네랄이 풍부한 수소수가 일반 물보다 피로 회복과 지구력 향상에 20% 이상 효율적이라고 보고하고 있습니다.</p>
+          <p>수소수는 운동 중 발생하는 산성화를 억제하고 염증 수치를 낮춰 근육 회복의 흐름을 돕는 방향으로 연구되고 있습니다.</p>
         </div>
+
         <div class="research-card">
           <div class="research-num">03</div>
           <h4>생활 건강 <em class="research-en">Metabolism</em></h4>
           <p class="research-headline">"풍부한 미네랄로 깨우는 신진대사의 스위치"</p>
           <p class="research-sub">"마시는 순간 퍼지는 미네랄, 몸속 생기를 깨우는 물."</p>
-          <p>수소와 미네랄의 시너지는 체내 대사 효소를 활성화합니다. 최신 의학 자료에 따르면, 이온화된 미네랄 수소수는 흡수율이 뛰어나 혈액 순환을 돕고 면역력을 기초부터 탄탄하게 다져줍니다.</p>
+          <p>미네랄과 수소의 조합은 일상적인 물 사용의 질을 높이는 방향으로 소개할 수 있습니다.</p>
         </div>
+
         <div class="research-card">
           <div class="research-num">04</div>
           <h4>가정 활용 <em class="research-en">Safe Integration</em></h4>
           <p class="research-headline">"온 가족 건강을 지키는 가장 쉬운 습관"</p>
           <p class="research-sub">"매일 마시는 미네랄 수소수, 우리 집 전용 건강 도우미."</p>
-          <p>특정 질환의 치료가 아닌, 일상적인 음용을 통해 체내 환경을 개선하고 만성 염증의 예방에 도움을 줍니다. 2026년 웰니스 트렌드는 가정 내 '수소 라이프스타일'을 통한 장기적인 예방 의학의 가치를 우선으로 꼽습니다.</p>
+          <p>일상적인 음용과 활용을 통해 가정 안에서 물 사용 습관을 더 편안하게 바꾸는 방향으로 안내할 수 있습니다.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ===== 9. 회원가입 안내 ===== -->
-  <section class="section member-section" id="member-join">
+  <section class="section section-member" id="member-join">
     <div class="container">
       <div class="section-header">
         <div class="section-label">MEMBERSHIP</div>
-        <h2 class="section-title">회원가입 후 추천코드와 추천링크를 받으세요</h2>
+        <h2 class="section-title">회원가입 후 나만의 추천코드와 추천링크를 받으세요</h2>
         <p class="section-desc">
-          상담은 상담대로 진행하고, 회원가입은 별도로 진행하여 추천구조를 더 선명하게 만듭니다.
+          상담은 상담대로 진행하고, 회원가입 후에는 본인 전용 추천코드와 추천링크를 발급받아 지인에게 쉽게 공유할 수 있습니다.
         </p>
       </div>
 
-      <div class="member-card">
-        <div class="member-card-top">
-          <div>
-            <h3 style="margin-top:0; font-size:30px; line-height:1.5; color:#16324f;">
-              회원가입이 완료되면<br>
-              나만의 추천코드와 추천링크가 자동 생성됩니다
-            </h3>
-            <p style="font-size:17px; line-height:1.9; color:#475569; margin-top:16px;">
-              발급된 추천링크를 카카오톡이나 문자로 지인에게 공유하면,
-              링크로 접속한 분의 추천코드가 자동으로 연결될 수 있도록 설계할 수 있습니다.
-            </p>
+      <div class="member-join-box">
+        <div class="member-join-left">
+          <h3>회원가입은 추천 구조의 시작입니다</h3>
+          <ul class="member-check-list">
+            <li><i class="fas fa-check-circle"></i> 회원가입 시 회원번호 자동 생성</li>
+            <li><i class="fas fa-check-circle"></i> 내 추천코드 자동 발급</li>
+            <li><i class="fas fa-check-circle"></i> 내 추천링크 자동 생성</li>
+            <li><i class="fas fa-check-circle"></i> 지인에게 카카오톡 · 문자로 공유 가능</li>
+          </ul>
+        </div>
 
-            <div class="member-highlight">
-              <span class="member-chip">회원번호 자동 생성</span>
-              <span class="member-chip">추천코드 자동 발급</span>
-              <span class="member-chip">추천링크 자동 생성</span>
-              <span class="member-chip">지인 공유 가능</span>
-            </div>
-
-            <div class="member-btn-wrap">
-              <a href="join.html" class="btn btn-join-accent">
-                <i class="fas fa-user-plus"></i>
-                회원 가입 페이지로 이동
-              </a>
-              <a href="#consult-form" class="btn btn-secondary">
-                <i class="fas fa-comments"></i>
-                먼저 상담 신청하기
-              </a>
-            </div>
-          </div>
-
-          <div class="member-flow-box">
-            <div class="member-flow-title">
-              <i class="fas fa-diagram-project"></i>
-              진행 흐름
-            </div>
-            <ul class="member-flow-list">
-              <li>
-                <span class="member-flow-num">1</span>
-                <span>상담 신청은 상담신청 시트로만 저장</span>
-              </li>
-              <li>
-                <span class="member-flow-num">2</span>
-                <span>회원가입 시 회원관리 시트에 정식 등록</span>
-              </li>
-              <li>
-                <span class="member-flow-num">3</span>
-                <span>회원번호 · 추천코드 · 추천링크 자동 생성</span>
-              </li>
-              <li>
-                <span class="member-flow-num">4</span>
-                <span>추천링크를 지인에게 공유</span>
-              </li>
-              <li>
-                <span class="member-flow-num">5</span>
-                <span>링크 접속 시 추천코드 자동 반영 가능</span>
-              </li>
-            </ul>
-          </div>
+        <div class="member-join-right">
+          <a href="join.html" class="btn btn-green btn-lg">
+            <i class="fas fa-user-plus"></i>
+            회원가입 페이지로 이동
+          </a>
+          <p class="member-join-note">
+            지금은 화면 구조만 먼저 나누고,<br>
+            회원가입 저장과 추천링크 발급은 다음 단계에서 Apps Script와 연결하면 됩니다.
+          </p>
         </div>
       </div>
     </div>
@@ -688,8 +526,8 @@
         <p class="section-desc">
           설치 환경과 사용 목적에 맞춰 순차적으로 안내드립니다.
         </p>
-        <p class="consult-guide-note">
-          상담신청은 상담 접수용이며, 추천링크 발급은 회원가입 후 진행됩니다.
+        <p class="consult-note">
+          상담신청은 상담 접수 전용입니다. 추천링크 발급은 회원가입 후 진행됩니다.
         </p>
       </div>
 
@@ -772,7 +610,7 @@
                 placeholder="추천코드가 있으면 입력해 주세요"
                 autocomplete="off"
               />
-              <small>추천링크로 접속한 경우 자동 입력되도록 연결할 수 있습니다.</small>
+              <small>링크로 접속하면 자동 입력되고, 없으면 직접 입력할 수 있습니다.</small>
             </div>
           </div>
 
@@ -798,12 +636,14 @@
         <div class="section-label">REFERRAL</div>
         <h2 class="section-title">추천으로 시작되는 연결</h2>
       </div>
+
       <div class="ref-box">
         <div class="ref-box-icon"><i class="fas fa-share-alt"></i></div>
         <p>
-          상담신청 시에는 추천코드만 입력할 수 있고,<br>
-          회원가입이 완료되면 본인 전용 추천코드와 추천링크를 발급받아 다시 공유할 수 있습니다.
+          상담신청 시에는 추천코드가 자동 반영될 수 있고,<br>
+          회원가입 후에는 본인의 추천코드와 추천링크를 따로 발급받게 됩니다.
         </p>
+
         <div class="ref-code-display" id="refCodeContainer">
           <div class="ref-code-label">현재 추천코드</div>
           <div class="ref-code-value" id="refCodeDisplay">없음</div>
