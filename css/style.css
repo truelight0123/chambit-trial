@@ -1440,3 +1440,142 @@ ul {
     justify-content: center;
   }
 }
+/* =============================================
+   추가 스타일 - 회원가입 분리 구조
+   ============================================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.btn-green {
+  background: linear-gradient(135deg, #18a957 0%, #128446 100%);
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(24, 169, 87, 0.28);
+}
+
+.btn-green:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(24, 169, 87, 0.36);
+}
+
+.btn-outline-green {
+  background: rgba(24, 169, 87, 0.08);
+  color: #128446;
+  border: 1.5px solid rgba(24, 169, 87, 0.20);
+}
+
+.btn-outline-green:hover {
+  transform: translateY(-3px);
+  background: rgba(24, 169, 87, 0.14);
+}
+
+.btn-wrap-2,
+.btn-wrap-3 {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.section-member {
+  background: linear-gradient(180deg, #f8faf5 0%, #f1f6ee 100%);
+}
+
+.member-join-box {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 26px;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 34px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+}
+
+.member-join-left h3 {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+}
+
+.member-check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.member-check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+.member-check-list i {
+  color: var(--green-mid);
+  margin-top: 3px;
+}
+
+.member-join-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-bg);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.member-join-note {
+  margin-top: 18px;
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+.consult-note {
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--green-mid);
+  font-weight: 600;
+}
+
+@media (max-width: 1080px) {
+  .header-nav {
+    display: none;
+  }
+
+  .header-actions {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .member-join-box {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .member-join-left h3 {
+    font-size: 24px;
+  }
+
+  .consult-note {
+    font-size: 14px;
+  }
+}
