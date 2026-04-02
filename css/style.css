@@ -325,7 +325,7 @@ ul {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(0,0,0,0.06);
   box-shadow: var(--shadow-lg);
-  padding: 22px 30px;
+  padding: 16px 18px;
   flex-wrap: wrap;
   justify-content: center;
   gap: 4px;
