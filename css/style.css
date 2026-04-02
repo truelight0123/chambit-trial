@@ -318,17 +318,21 @@ ul {
 }
 
 .hero-price-box {
-  display: inline-flex;
+  display: flex; /* 👈 이게 핵심 */
   align-items: center;
-  gap: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  max-width: 520px; /* 👈 가로 줄이기 */
+  margin: 0 auto;
+
   background: #fff;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(0,0,0,0.06);
   box-shadow: var(--shadow-lg);
+
   padding: 16px 18px;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 4px;
+  gap: 6px;
 }
 
 .price-item {
