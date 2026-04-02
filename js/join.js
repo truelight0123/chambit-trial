@@ -35,8 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const resultRefLink = document.getElementById('resultRefLink');
   const copyRefLinkBtn = document.getElementById('copyRefLinkBtn');
 
-  const refCodeDisplay = document.getElementById('refCodeDisplay');
-
   // URL에서 추천코드만 읽기
   const urlParams = new URLSearchParams(window.location.search);
   const finalRef = (urlParams.get('ref') || '').trim();
@@ -47,17 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // 추천코드 input에 반영
   if (referralCodeInput) {
     referralCodeInput.value = finalRef;
-  }
-
-  // 추천코드 표시 영역이 있으면 반영
-  if (refCodeDisplay) {
-    if (finalRef) {
-      refCodeDisplay.textContent = finalRef;
-      refCodeDisplay.style.display = 'block';
-    } else {
-      refCodeDisplay.textContent = '';
-      refCodeDisplay.style.display = 'none';
-    }
   }
 
   // 전화번호 자동 포맷
