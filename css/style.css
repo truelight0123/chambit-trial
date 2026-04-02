@@ -323,7 +323,7 @@ ul {
   justify-content: center;
   flex-wrap: wrap;
 
-  max-width: 520px; /* 👈 가로 줄이기 */
+  max-width: 600px; /* 👈 가로 줄이기 */
   margin: 0 auto;
 
   background: #fff;
