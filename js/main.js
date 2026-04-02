@@ -24,26 +24,39 @@ window.addEventListener('DOMContentLoaded', function () {
   const ref = (getQueryParam('ref') || '').trim();
 
   // 추천코드 저장
-  if (ref) {
-    localStorage.setItem('chambit_ref_code', ref);
-  }
+// URL에서 추천코드 가져오기
+const params = new URLSearchParams(window.location.search);
+const ref = (params.get('ref') || '').trim();
 
-  const savedRef = localStorage.getItem('chambit_ref_code') || '';
-  const finalRef = ref || savedRef;
-  
-  const joinLinks = document.querySelectorAll('a[href="join.html"]');
+// 기존 저장된 추천코드 제거
+localStorage.removeItem('chambit_ref_code');
 
-if (joinLinks.length > 0 && finalRef) {
-  joinLinks.forEach(function(link) {
+// 최종 추천코드
+const finalRef = ref;
+
+// 회원가입 링크 처리
+const joinLinks = document.querySelectorAll('a[href="join.html"]');
+
+joinLinks.forEach(function(link) {
+  if (finalRef) {
     link.href = 'join.html?ref=' + encodeURIComponent(finalRef);
-  });
+  } else {
+    link.href = 'join.html';
+  }
+});
+
+// 추천코드 입력창 & 표시
+const refInput = document.getElementById('referralCode');
+const refDisplay = document.getElementById('refCodeDisplay');
+
+if (refInput) {
+  refInput.value = finalRef;
 }
 
-  const refInput = document.getElementById('referralCode');
-  const refDisplay = document.getElementById('refCodeDisplay');
-
-  if (refInput) refInput.value = finalRef;
-  if (refDisplay) refDisplay.textContent = finalRef || '없음';
+if (refDisplay) {
+  refDisplay.textContent = finalRef || '';
+  refDisplay.style.display = finalRef ? 'block' : 'none';
+}
 
   /* 전화번호 자동 포맷 */
   const phone = document.getElementById('phone');
