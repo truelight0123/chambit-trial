@@ -35,22 +35,21 @@ document.addEventListener('DOMContentLoaded', function () {
   const resultRefLink = document.getElementById('resultRefLink');
   const copyRefLinkBtn = document.getElementById('copyRefLinkBtn');
 
-  // 선택 요소: 추천코드 표시 박스가 있을 때만 사용
   const refCodeDisplay = document.getElementById('refCodeDisplay');
 
-  // URL에서만 추천코드 읽기
+  // URL에서 추천코드만 읽기
   const urlParams = new URLSearchParams(window.location.search);
   const finalRef = (urlParams.get('ref') || '').trim();
 
-  // 예전 localStorage 값 제거
+  // 예전 저장값 제거
   localStorage.removeItem('chambit_ref_code');
 
-  // 추천코드 입력칸 처리
+  // 추천코드 input에 반영
   if (referralCodeInput) {
     referralCodeInput.value = finalRef;
   }
 
-  // 추천코드 표시영역 처리 (있을 때만)
+  // 추천코드 표시 영역이 있으면 반영
   if (refCodeDisplay) {
     if (finalRef) {
       refCodeDisplay.textContent = finalRef;
