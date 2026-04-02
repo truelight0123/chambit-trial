@@ -28,14 +28,14 @@ window.addEventListener('DOMContentLoaded', function () {
 const params = new URLSearchParams(window.location.search);
 const ref = (params.get('ref') || '').trim();
 
-// 기존 저장된 추천코드 제거
+// 예전 저장값 제거
 localStorage.removeItem('chambit_ref_code');
 
 // 최종 추천코드
 const finalRef = ref;
 
 // 회원가입 링크 처리
-const joinLinks = document.querySelectorAll('a[href="join.html"]');
+const joinLinks = document.querySelectorAll('a[href="join.html"], a[href="./join.html"]');
 
 joinLinks.forEach(function(link) {
   if (finalRef) {
