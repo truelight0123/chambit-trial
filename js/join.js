@@ -35,34 +35,36 @@ document.addEventListener('DOMContentLoaded', function () {
   const resultRefLink = document.getElementById('resultRefLink');
   const copyRefLinkBtn = document.getElementById('copyRefLinkBtn');
 
+  // 선택 요소: 추천코드 표시 박스가 있을 때만 사용
+  const refCodeDisplay = document.getElementById('refCodeDisplay');
+
+  // URL에서만 추천코드 읽기
   const urlParams = new URLSearchParams(window.location.search);
-  const refFromUrl = (urlParams.get('ref') || '').trim();
+  const finalRef = (urlParams.get('ref') || '').trim();
 
-  if (refFromUrl) {
-    localStorage.setItem('chambit_ref_code', refFromUrl);
-  }
+  // 예전 localStorage 값 제거
+  localStorage.removeItem('chambit_ref_code');
 
-  const savedRef = localStorage.getItem('chambit_ref_code') || '';
-  const finalRef = refFromUrl || savedRef;
-
-  if (finalRef && referralCodeInput) {
+  // 추천코드 입력칸 처리
+  if (referralCodeInput) {
     referralCodeInput.value = finalRef;
   }
 
+  // 추천코드 표시영역 처리 (있을 때만)
+  if (refCodeDisplay) {
+    if (finalRef) {
+      refCodeDisplay.textContent = finalRef;
+      refCodeDisplay.style.display = 'block';
+    } else {
+      refCodeDisplay.textContent = '';
+      refCodeDisplay.style.display = 'none';
+    }
+  }
+
+  // 전화번호 자동 포맷
   if (phoneInput) {
     phoneInput.addEventListener('input', function () {
-      const num = this.value.replace(/\D/g, '').slice(0, 11);
-
-      if (num.length <= 3) {
-        this.value = num;
-      } else if (num.length <= 7) {
-        this.value = num.slice(0, 3) + '-' + num.slice(3);
-      } else {
-        this.value =
-          num.slice(0, 3) + '-' +
-          num.slice(3, 7) + '-' +
-          num.slice(7);
-      }
+      formatPhoneInput(this);
     });
   }
 
@@ -91,9 +93,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     try {
-      submitBtn.disabled = true;
-      submitText.style.display = 'none';
-      submitLoading.style.display = 'inline-flex';
+      if (submitBtn) submitBtn.disabled = true;
+      if (submitText) submitText.style.display = 'none';
+      if (submitLoading) submitLoading.style.display = 'inline-flex';
 
       const res = await fetch(WEB_APP_URL, {
         method: 'POST',
@@ -103,12 +105,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const result = await res.json();
 
       if (result.success) {
-        form.style.display = 'none';
-        resultBox.style.display = 'block';
+        if (form) form.style.display = 'none';
+        if (resultBox) resultBox.style.display = 'block';
 
-        resultMemberId.textContent = result.memberId || '-';
-        resultRefCode.textContent = result.refCode || '-';
-        resultRefLink.value = result.refLink || '';
+        if (resultMemberId) resultMemberId.textContent = result.memberId || '-';
+        if (resultRefCode) resultRefCode.textContent = result.refCode || '-';
+        if (resultRefLink) resultRefLink.value = result.refLink || '';
       } else {
         alert(result.message || '회원가입 처리 중 오류가 발생했습니다.');
       }
@@ -116,15 +118,15 @@ document.addEventListener('DOMContentLoaded', function () {
       console.error(error);
       alert('전송 오류가 발생했습니다.');
     } finally {
-      submitBtn.disabled = false;
-      submitText.style.display = 'inline-flex';
-      submitLoading.style.display = 'none';
+      if (submitBtn) submitBtn.disabled = false;
+      if (submitText) submitText.style.display = 'inline-flex';
+      if (submitLoading) submitLoading.style.display = 'none';
     }
   });
 
   if (copyRefLinkBtn) {
     copyRefLinkBtn.addEventListener('click', async function () {
-      if (!resultRefLink.value) return;
+      if (!resultRefLink || !resultRefLink.value) return;
 
       try {
         await navigator.clipboard.writeText(resultRefLink.value);
