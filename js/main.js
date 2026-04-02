@@ -23,40 +23,36 @@ function getValue(id) {
 window.addEventListener('DOMContentLoaded', function () {
   const ref = (getQueryParam('ref') || '').trim();
 
-  // 추천코드 저장
-// URL에서 추천코드 가져오기
-const params = new URLSearchParams(window.location.search);
-const ref = (params.get('ref') || '').trim();
+  // 예전 저장값 제거
+  localStorage.removeItem('chambit_ref_code');
 
-// 예전 저장값 제거
-localStorage.removeItem('chambit_ref_code');
+  // 최종 추천코드: URL에 있을 때만 사용
+  const finalRef = ref;
 
-// 최종 추천코드
-const finalRef = ref;
+  // 회원가입 링크 처리
+  // href가 join.html, ./join.html, /join.html, join.html?... 등이어도 잡히도록 처리
+  const joinLinks = document.querySelectorAll('a[href*="join.html"]');
 
-// 회원가입 링크 처리
-const joinLinks = document.querySelectorAll('a[href="join.html"], a[href="./join.html"]');
+  joinLinks.forEach(function (link) {
+    if (finalRef) {
+      link.href = 'join.html?ref=' + encodeURIComponent(finalRef);
+    } else {
+      link.href = 'join.html';
+    }
+  });
 
-joinLinks.forEach(function(link) {
-  if (finalRef) {
-    link.href = 'join.html?ref=' + encodeURIComponent(finalRef);
-  } else {
-    link.href = 'join.html';
+  // 추천코드 입력창 & 표시
+  const refInput = document.getElementById('referralCode');
+  const refDisplay = document.getElementById('refCodeDisplay');
+
+  if (refInput) {
+    refInput.value = finalRef;
   }
-});
 
-// 추천코드 입력창 & 표시
-const refInput = document.getElementById('referralCode');
-const refDisplay = document.getElementById('refCodeDisplay');
-
-if (refInput) {
-  refInput.value = finalRef;
-}
-
-if (refDisplay) {
-  refDisplay.textContent = finalRef || '';
-  refDisplay.style.display = finalRef ? 'block' : 'none';
-}
+  if (refDisplay) {
+    refDisplay.textContent = finalRef || '';
+    refDisplay.style.display = finalRef ? 'block' : 'none';
+  }
 
   /* 전화번호 자동 포맷 */
   const phone = document.getElementById('phone');
@@ -178,7 +174,7 @@ if (form) {
 }
 
 /* ===== 폼 초기화 ===== */
-if (resetBtn) {
+if (resetBtn && form) {
   resetBtn.addEventListener('click', function () {
     form.reset();
 
@@ -187,7 +183,11 @@ if (resetBtn) {
     const refCodeDisplay = document.getElementById('refCodeDisplay');
 
     if (referralCode) referralCode.value = ref;
-    if (refCodeDisplay) refCodeDisplay.textContent = ref || '없음';
+
+    if (refCodeDisplay) {
+      refCodeDisplay.textContent = ref || '';
+      refCodeDisplay.style.display = ref ? 'block' : 'none';
+    }
 
     form.style.display = 'block';
     if (successBox) successBox.style.display = 'none';
