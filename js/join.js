@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw6qHnoEaDcgMP4E21ZlcDlFE6fkC38zp2Rqh2ebc-GhPioiRAIi0VGhlwEno26OgJ8/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw1QAwzKg1FsI5rFlhRTIVIKsSJBZv4HNFJ3hS1mav20FEVmFCJYnS0xV183LEanQI9/exec";
 
 function getValue(id) {
   const el = document.getElementById(id);
