@@ -205,3 +205,54 @@ if (scrollBtn) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+
+async function findMember() {
+  const name = document.getElementById('findName').value.trim();
+  const phone = document.getElementById('findPhone').value.trim();
+
+  if (!name || !phone) {
+    alert('이름과 연락처를 입력해주세요.');
+    return;
+  }
+
+  try {
+    const response = await fetch('👉여기에 Apps Script URL', {
+      method: 'POST',
+      body: JSON.stringify({
+        type: 'find_member',
+        name,
+        phone
+      })
+    });
+
+    const result = await response.json();
+
+    const resultBox = document.getElementById('findResult');
+
+    if (!result.success) {
+      resultBox.style.display = 'block';
+      resultBox.innerHTML = `
+        <p style="color:red;">회원 정보를 찾을 수 없습니다.</p>
+      `;
+      return;
+    }
+
+    const data = result.data;
+
+    resultBox.style.display = 'block';
+    resultBox.innerHTML = `
+      <p><strong>${data.name}</strong>님의 정보</p>
+      <p>추천코드: <b>${data.refCode}</b></p>
+      <p>추천링크: <br>${data.refLink}</p>
+      <button onclick="copyText('${data.refCode}')">코드 복사</button>
+      <button onclick="copyText('${data.refLink}')">링크 복사</button>
+    `;
+  } catch (e) {
+    alert('조회 중 오류 발생');
+  }
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text);
+  alert('복사되었습니다!');
+}
