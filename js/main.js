@@ -244,15 +244,26 @@ async function findMember() {
       <p><strong>${data.name}</strong>님의 정보</p>
       <p>추천코드: <b>${data.refCode}</b></p>
       <p>추천링크: <br>${data.refLink}</p>
-      <button onclick="copyText('${data.refCode}')">코드 복사</button>
-      <button onclick="copyText('${data.refLink}')">링크 복사</button>
+      <button onclick="copyText('${data.refCode}', this)">코드 복사</button>
+      <button onclick="copyText('${data.refLink}', this)">링크 복사</button>
     `;
   } catch (e) {
     alert('조회 중 오류 발생');
   }
 }
 
-function copyText(text) {
-  navigator.clipboard.writeText(text);
-  alert('복사되었습니다!');
+function copyText(text, button) {
+  navigator.clipboard.writeText(text).then(function () {
+    const originalText = button.textContent;
+
+    button.textContent = '복사됨 ✓';
+    button.disabled = true;
+
+    setTimeout(function () {
+      button.textContent = originalText;
+      button.disabled = false;
+    }, 1500);
+  }).catch(function () {
+    alert('복사에 실패했습니다. 다시 시도해주세요.');
+  });
 }
