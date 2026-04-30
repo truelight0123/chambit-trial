@@ -216,7 +216,7 @@ async function findMember() {
   }
 
   try {
-    const response = await fetch('👉여기에 Apps Script URL', {
+    const response = await fetch(WEB_APP_URL, {
       method: 'POST',
       body: JSON.stringify({
         type: 'find_member',
